@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Common</string>
+    <string name="new_version_available">发现新版本</string>
+    <string name="default_positive_text">确定</string>
+    <string name="default_negative_text">取消</string>
+    <string name="update_or_not">发现新版本</string>
+    <string name="update_title">升级提示</string>
+    <string name="dialog_positive_button">立即下载</string>
+    <string name="dialog_negative_button">以后再说</string>
+    <string name="app_no_new_update">没有发现新版本</string>
+    <string name="download_progress">正在下载:%1$d%%</string>
+    <string name="download_success">下载完成，点击安装</string>
+    <string name="download_begin">%1$s开始下载</string>
+    <string name="download_done">%1$s下载完成</string>
+    <string name="system_exit_notice">再次点击将退出程序</string>
+    <string name="warning_not_wifi">您当前使用的是 2G/3G/4G 网络，如果继续操作可能产生大量流量，请问是否继续？</string>
+    <string name="continue_btn">继续</string>
+    <string name="notice">提示</string>
+</resources>
