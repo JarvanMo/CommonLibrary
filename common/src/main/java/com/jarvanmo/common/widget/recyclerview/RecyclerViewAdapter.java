@@ -67,12 +67,7 @@ public abstract class RecyclerViewAdapter<I> extends RecyclerView.Adapter<Recycl
         notifyItemInserted(data.size() == 0 ? 0 : data.size() - 1);
     }
 
-    public void change(int position){
-        if(position < 0 || position >= data.size()){
-            return;
-        }
-        notifyItemChanged(position);
-    }
+
 
     public void addAll(List<I> newData) {
         if (newData == null) {
