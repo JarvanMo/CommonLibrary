@@ -5,6 +5,7 @@ import android.databinding.ViewDataBinding;
 import android.support.annotation.CallSuper;
 import android.support.annotation.Keep;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -42,10 +43,10 @@ public abstract class RecyclerViewAdapter<I> extends RecyclerView.Adapter<Recycl
     @CallSuper
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
-        onBind(holder,position,data.get(position));
+        onBind(holder, position, data.get(position));
     }
 
-    public abstract void onBind(BaseViewHolder holder,int position,I item);
+    public abstract void onBind(BaseViewHolder holder, int position, I item);
 
     @LayoutRes
     protected abstract int getItemLayout(int position);
@@ -59,7 +60,7 @@ public abstract class RecyclerViewAdapter<I> extends RecyclerView.Adapter<Recycl
 
     public void setData(List<I> newData) {
         data.clear();
-        addAll(newData);
+        data.addAll(newData);
     }
 
     public void add(I item) {
@@ -68,13 +69,14 @@ public abstract class RecyclerViewAdapter<I> extends RecyclerView.Adapter<Recycl
     }
 
 
-
-    public void addAll(List<I> newData) {
-        if (newData == null) {
+    public void addAll(List<I> moreData) {
+        if (moreData == null) {
             return;
         }
-        data.addAll(newData);
-        notifyDataSetChanged();
+
+        int index = data.size();
+        data.addAll(moreData);
+        notifyItemRangeInserted(index, moreData.size());
     }
 
     public void set(int position, I item) {
@@ -85,6 +87,15 @@ public abstract class RecyclerViewAdapter<I> extends RecyclerView.Adapter<Recycl
         notifyItemChanged(position);
     }
 
+    @Nullable
+    public I getItem(int position) {
+        if (position < 0 || position >= data.size()) {
+            return null;
+        }
+
+        return data.get(position);
+
+    }
 
     public void remove(int position) {
         if (position < 0 || position >= data.size()) {
@@ -128,6 +139,10 @@ public abstract class RecyclerViewAdapter<I> extends RecyclerView.Adapter<Recycl
 
     public boolean isEmpty() {
         return data == null || data.isEmpty();
+    }
+
+    public int size(){
+        return data == null ? 0 : data.size();
     }
 
     public void clear() {

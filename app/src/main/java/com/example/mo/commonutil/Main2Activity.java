@@ -37,7 +37,15 @@ public class Main2Activity extends AppCompatActivity {
 
 
 
-
+        List<Test> data = new ArrayList<>();
+        Test test;
+        for (int i = 0; i < 2; i++) {
+            test = new Test();
+            test.name = i +"";
+            test.time = System.currentTimeMillis() + "->"+i;
+            data.add(test);
+        }
+        adapter.setData(data);
 
         binding.content.rc.setLayoutManager(new LinearLayoutManager(this));
         binding.content.rc.setAdapter(adapter);
@@ -49,16 +57,17 @@ public class Main2Activity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+
         List<Test> data = new ArrayList<>();
         Test test;
-        for (int i = 0; i < 50; i++) {
+        Test a = adapter.getItem(adapter.size() - 1);
+        for (int i = Integer.parseInt(a.name) + 1; i < Integer.parseInt(a.name) + 2; i++) {
             test = new Test();
-            test.name = "a" + i;
+            test.name = i+ "";
             test.time = System.currentTimeMillis() + "->"+i;
             data.add(test);
         }
-
-        adapter.setData(data);
+        adapter.addAll(data);
 
     }
 }
