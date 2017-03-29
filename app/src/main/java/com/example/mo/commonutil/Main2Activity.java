@@ -6,6 +6,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SimpleItemAnimator;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
@@ -29,8 +31,8 @@ public class Main2Activity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
             }
         });
 
@@ -39,13 +41,14 @@ public class Main2Activity extends AppCompatActivity {
 
         List<Test> data = new ArrayList<>();
         Test test;
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 100; i++) {
             test = new Test();
             test.name = i +"";
             test.time = System.currentTimeMillis() + "->"+i;
             data.add(test);
         }
         adapter.setData(data);
+
 
         binding.content.rc.setLayoutManager(new LinearLayoutManager(this));
         binding.content.rc.setAdapter(adapter);
@@ -58,16 +61,16 @@ public class Main2Activity extends AppCompatActivity {
         super.onResume();
 
 
-        List<Test> data = new ArrayList<>();
-        Test test;
-        Test a = adapter.getItem(adapter.size() - 1);
-        for (int i = Integer.parseInt(a.name) + 1; i < Integer.parseInt(a.name) + 2; i++) {
-            test = new Test();
-            test.name = i+ "";
-            test.time = System.currentTimeMillis() + "->"+i;
-            data.add(test);
-        }
-        adapter.addAll(data);
+//        List<Test> data = new ArrayList<>();
+//        Test test;
+//        Test a = adapter.getItem(adapter.size() - 1);
+//        for (int i = Integer.parseInt(a.name) + 1; i < Integer.parseInt(a.name) + 4; i++) {
+//            test = new Test();
+//            test.name = i+ "";
+//            test.time = System.currentTimeMillis() + "->"+i;
+//            data.add(test);
+//        }
+//        adapter.insert(0,data);
 
     }
 }

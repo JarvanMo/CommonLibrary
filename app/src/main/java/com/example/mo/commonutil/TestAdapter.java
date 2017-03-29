@@ -9,9 +9,8 @@ import com.jarvanmo.common.widget.recyclerview.RecyclerViewAdapter;
 
 public class TestAdapter extends RecyclerViewAdapter<Test> {
 
-
     @Override
-    protected int getItemLayout(int position) {
+    protected int getItemLayout(int position,Test item) {
             return R.layout.item_rc2;
     }
 

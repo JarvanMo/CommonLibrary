@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -37,7 +39,7 @@ public abstract class RecyclerViewAdapter<I> extends RecyclerView.Adapter<Recycl
 
     @Override
     public int getItemViewType(int position) {
-        return getItemLayout(position);
+        return getItemLayout(position, data.get(position));
     }
 
     @CallSuper
@@ -49,7 +51,7 @@ public abstract class RecyclerViewAdapter<I> extends RecyclerView.Adapter<Recycl
     public abstract void onBind(BaseViewHolder holder, int position, I item);
 
     @LayoutRes
-    protected abstract int getItemLayout(int position);
+    protected abstract int getItemLayout(int position, I item);
 
 
     @Override
@@ -61,6 +63,18 @@ public abstract class RecyclerViewAdapter<I> extends RecyclerView.Adapter<Recycl
     public void setData(List<I> newData) {
         data.clear();
         data.addAll(newData);
+    }
+
+    public void insert(int index, List<I> insertedData) {
+
+        if (index < 0 || index > data.size()) {
+            return;
+        }
+
+        data.addAll(index, insertedData);
+        notifyItemRangeInserted(index, insertedData.size());
+//        notifyDataSetChanged();
+
     }
 
     public void add(I item) {
@@ -115,22 +129,9 @@ public abstract class RecyclerViewAdapter<I> extends RecyclerView.Adapter<Recycl
     }
 
 
-    public void remove(int start, int end) {
-        if (start > end) {
-            return;
-        }
-        if (start < 0 || start >= data.size()) {
-            return;
-        }
-        if (end < 0 || end >= data.size()) {
-            return;
-        }
-
-        for (int i = start; i <= end; i++) {
-            remove(i);
-        }
-
-
+    public void remove(List<I> subList) {
+        data.removeAll(subList);
+        notifyDataSetChanged();
     }
 
     public boolean contains(I item) {
@@ -141,7 +142,7 @@ public abstract class RecyclerViewAdapter<I> extends RecyclerView.Adapter<Recycl
         return data == null || data.isEmpty();
     }
 
-    public int size(){
+    public int size() {
         return data == null ? 0 : data.size();
     }
 

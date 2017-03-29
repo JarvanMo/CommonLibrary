@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">老年云课堂</string>
+    <string name="app_name">CommonUtils </string>
 
     <string name="api_connection_error">网络连接错误，稍后再试</string>
 
