@@ -73,9 +73,8 @@ public abstract class RecyclerViewAdapter<I> extends RecyclerView.Adapter<Recycl
         if (newData == null) {
             return;
         }
-        int oldSize = data.size();
         data.addAll(newData);
-        notifyItemRangeInserted(oldSize, newData.size());
+        notifyDataSetChanged();
     }
 
     public void set(int position, I item) {

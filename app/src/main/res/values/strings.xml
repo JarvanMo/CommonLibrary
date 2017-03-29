@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">CommonUtil</string>
+    <string name="app_name">老年云课堂</string>
+
+    <string name="api_connection_error">网络连接错误，稍后再试</string>
+
+    <string name="title_home">首页</string>
+    <string name="title_sorts">分类</string>
+    <string name="title_latest">最新</string>
+    <string name="title_person">我的</string>
+
+    <!--分享工具-->
+    <string name="share_wx_friend">微信好友</string>
+    <string name="share_wx_circle">微信朋友圈</string>
+    <string name="share_name">分享</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
 </resources>

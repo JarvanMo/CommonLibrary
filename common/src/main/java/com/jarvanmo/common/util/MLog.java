@@ -48,7 +48,7 @@ public final class MLog {
             return "[" + Thread.currentThread().getId() + ": " + st.getFileName() + ":" + st.getLineNumber() + "]\n";
         }
 
-        return "JLog->unknown lines";
+        return "MLog->unknown lines";
 
 
     }
