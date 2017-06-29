@@ -155,7 +155,7 @@ public abstract class RecyclerViewAdapter<I> extends RecyclerView.Adapter<Recycl
 
     }
 
-    protected static class BaseViewHolder extends RecyclerView.ViewHolder {
+    public static class BaseViewHolder extends RecyclerView.ViewHolder {
 
         private ViewDataBinding mBinding;
 
